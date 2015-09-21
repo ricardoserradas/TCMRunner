@@ -1,0 +1,77 @@
+{
+  "id": "D3692786-6915-401D-A629-32568B3586A0",
+  "name": "TCMRunner",
+  "friendlyName": "Run Automated TFS Test Cases",
+  "description": "Run Automated TFS Test Cases using a Lab Environment",
+  "author": "Ricardo Serradas",
+  "helpMarkDown": "Replace with markdown to show in help",
+  "category": "Test",
+  "visibility": [
+    "Build"
+  ],
+  "demands": [ ],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "29"
+  },
+  "minimumAgentVersion": "1.83.0",
+  "instanceNameFormat": "Run Automated TFS Test Cases $(message)",
+  "inputs": [
+    {
+      "name": "planId",
+      "type": "string",
+      "label": "Test Plan ID",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Test Plan ID the test suite(s) come from. It must be an integer value."
+    },
+    {
+      "name": "suiteId",
+      "type": "string",
+      "label": "Test Suite ID",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Test Suite(s) that contains the Test Cases to run. It must be an integer value."
+    },
+    {
+      "name": "configId",
+      "type": "string",
+      "label": "Test Configuration ID",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Test Configuration ID to use in this run. It must be an integer value."
+    },
+    {
+      "name": "testEnvironment",
+      "type": "string",
+      "label": "Test Environment",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Test Environment you want to use for this Test Run."
+    },
+    {
+      "name": "settingsName",
+      "type": "string",
+      "label": "Test Settings",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Test Settings for Automated Runs you want to use."
+    },
+    {
+      "name": "buildDir",
+      "type": "string",
+      "label": "Build Drop Location",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The sharing Path you configured in the Publish Artifact Task."
+    }
+  ],
+  "execution": {
+    "PowerShell": {
+      "target": "$(currentDirectory)\\tcmrunner.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)"
+    }
+  }
+}
